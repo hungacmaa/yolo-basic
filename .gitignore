@@ -1,0 +1,9 @@
+# ảnh
+*.jpg
+*.png
+
+# thư mục runs
+runs
+
+# thư mục ảnh
+images
