@@ -10,16 +10,17 @@ model = YOLO(modelSrc)
 
 app = Flask(__name__)
 
+# http://localhost:5000/predict
 @app.route('/predict', methods=['POST'])
 def predict():
     response = {}
     response['status'] = 200
+    response['data'] = []
     try:
         # Lấy đường dẫn ảnh từ request
         img_urls = request.json.get('img_urls')
 
         response['message'] = "Detect sucessfully"
-        response['data'] = []
 
         for url in img_urls:
 
@@ -39,7 +40,8 @@ def predict():
         return jsonify(response)
 
     except Exception as e:
-        return jsonify({'error': str(e)})
+        response['message'] = str(e)
+        return jsonify(response)
 
 if __name__ == '__main__':
     app.run(debug=True)
