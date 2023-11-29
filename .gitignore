@@ -7,3 +7,6 @@ runs
 
 # thư mục ảnh
 images
+
+# file key đến firebase
+firebase/*.json
