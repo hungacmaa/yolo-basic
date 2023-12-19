@@ -4,6 +4,7 @@ import cv2
 import numpy as np
 from ultralytics import YOLO
 import json
+import time
 
 modelSrc = "clothing-detect.pt"
 model = YOLO(modelSrc)
@@ -42,6 +43,22 @@ def predict():
     except Exception as e:
         response['message'] = str(e)
         return jsonify(response)
+
+@app.route('/hello', methods=['GET'])
+def hello():
+    time.sleep(5)
+    return jsonify("abc xyz")
+    response = {}
+    response['status'] = 200
+    response['data'] = "hello from Flask app"
+    return jsonify(response)
+    
+
+@app.route('/test-post', methods=['POST'])
+def testPost():
+    data = request.json.get('img_urls')
+    print(data)
+    return jsonify(data)
 
 if __name__ == '__main__':
     app.run(debug=True)
