@@ -12,7 +12,7 @@ listImage = ['images/dn1.jpg', 'images/danhnhau.webp']
 result = {}
 result['status'] = 200
 
-detection_outputs = model.predict(source="images/dn1.jpg", conf=0.25, save=True)
+detection_outputs = model.predict(source="images/dn1.jpg", conf=0.25, save=False)
 
 # try:
 #     detection_outputs = model.predict(source="images/dn1.jpg", conf=0.25, save=False)
